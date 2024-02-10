@@ -1,0 +1,89 @@
+<!-- <div class="d-flex flex-row bd-highlight mb-9">
+    <div class="p-2 w-100 bd-highlight">
+  
+      <div class="input-group mb-12">
+        <span class="input-group-text">Product Name</span>
+        <input type="text" class="form-control" name="productName"[(ngModel)]="ProductName">
+      </div>
+    </div>
+  </div>
+  <button (click)="addProduct()" *ngIf="depart.ProductId == '0'" class="btn btn-primary">
+    Add
+  </button> 
+  
+  <button (click)="updateProduct()" *ngIf="depart.ProductId !='0'" class="btn btn-primary">
+    Update
+  </button>-->
+  <div class="container-fluid py-3">
+  
+    <div class="row justify-content-center my-5">
+      <div class="col-12">
+        <form [formGroup]="reactiveForm" #form="ngForm">
+          <div class="row">
+            <div class="col mb-2">
+              <label for="name" class="form-label">Name:</label>
+              <input type="text" id="name" name="name" formControlName="name" placeholder="Product Name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="name.invalid && (name.dirty || name.touched)">
+              <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+                <div *ngIf="name.errors?.['required']">
+                  This field is required.
+                </div>
+                <div *ngIf="name.errors?.['minlength']">
+                  This field must have at least 1 character.
+                </div>
+                <div *ngIf="name.errors?.['maxlength']">
+                  This field must have at most 250 characters.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-2">
+              <label for="description" class="form-label">Description:</label>
+              <textarea type="text" id="description" name="description" formControlName="description" placeholder="Description" maxlength="200" class="form-control form-control-sm" [class.is-invalid]="description.invalid && (description.dirty || description.touched)"></textarea>
+              <div *ngIf="description.invalid && (description.dirty || description.touched)" class="invalid-feedback">
+                <div *ngIf="description.errors?.['required']">
+                    This field is required.
+                  </div>
+                <div *ngIf="description.errors?.['maxlength']">
+                  This field must description at most 200 characters.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-2">
+              <label for="quantity" class="form-label">Quantity:</label>
+              <input type="number" id="quantity" name="quantity" formControlName="quantity" placeholder="Quantity" maxlength="200" class="form-control form-control-sm" [class.is-invalid]="quantity.invalid && (quantity.dirty || quantity.touched)">
+              <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)" class="invalid-feedback">
+                <div *ngIf="quantity.errors?.['required']">
+                    This field is required.
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-2">
+              <label for="price" class="form-label">Price:</label>
+              <input type="number" id="price" name="price" formControlName="price" placeholder="Price" maxlength="200" class="form-control form-control-sm" [class.is-invalid]="price.invalid && (price.dirty || price.touched)">
+              <div *ngIf="price.invalid && (price.dirty || price.touched)" class="invalid-feedback">
+                <div *ngIf="price.errors?.['required']">
+                    This field is required.
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+        
+            
+          <div class="row">
+            <div class="col mb-2 d-grid">
+              <button type="button"  *ngIf="product.id ==0"  class="btn btn-sm btn-success" (click)="validate()">Save</button>
+
+              <button type="button"  *ngIf="product.id !=0"  class="btn btn-sm btn-success" (click)="validate()">Update</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
